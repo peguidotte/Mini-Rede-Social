@@ -1,0 +1,50 @@
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.post__sections {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: start;
+    gap: .5rem;
+}
+
+.post__campos {
+    width: 30rem;
+    height: 8rem;
+    padding: .625rem;
+}
+
+.post__campos2 {
+    width: 30rem;
+    height: 2rem;
+}
+
+#post-btn {
+    margin-top: .625rem;
+    padding: .375rem;
+    background-color: transparent;
+    border-radius: .25rem;
+}
+#post-btn:hover {
+    background-color: lightgray;
+    cursor:pointer;
+}

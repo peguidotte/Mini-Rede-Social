@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Rede Social</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mini Rede Social</h1>
+    </header>
+    <main>
+        <form class="post">
+            <div class="post__sections">
+                <label for="post-texto">Digite seu post:</label>
+                <textarea class="post__campos" id="post-texto" type="text" placeholder="O que você está pensando hoje?" required></textarea>
+            </div> 
+            <div class="post__sections">
+                <label for="post-categorias">Categoria:</label>
+                <select name="categorias" id="post-categorias" class="post__campos2" aria-placeholder="Selecione uma categoria" required>
+                    <option value="post-categorias-1">Todos</option>
+                    <option value="post-categorias-2">Esportes</option>
+                    <option value="post-categorias-3">Memes</option>
+                    <option value="post-categorias-4">Noticias</option>
+                </select>
+            </div>
+            <div class="post__sections">
+            <label for="post__imagem">Cole aqui imagens (Url)</label>
+            <input type="url" name="imagem" class="post__campos2 post__imagem" placeholder="Cole aqui a URL da sua imagem">
+            <input type="url" name="imagem" class="post__campos2 post__imagem" placeholder="Cole aqui a URL da sua imagem">
+            <input type="url" name="imagem" class="post__campos2 post__imagem" placeholder="Cole aqui a URL da sua imagem">
+            <button id="post-btn" value="">Postar</button>
+            </div>
+        </form>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
