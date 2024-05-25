@@ -1,28 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
     const btn_criar_post = document.querySelector('#post-btn');
     const postsList = document.querySelector('#posts');
+    const selectCategoria = document.querySelector('#selecionar-categorias');
+    const categoriesSet = new Set(); // Para armazenar as categorias únicas
 
     btn_criar_post.addEventListener('click', function(event) {
         event.preventDefault();
 
         const postText = document.querySelector('#post-texto').value.trim();
-        const postCategory = document.querySelector('#post-categorias').value;
-        console.log(postCategory)
+        const postCategory = document.querySelector('#post-categorias').value.trim();
         const imageUrls = Array.from(document.querySelectorAll('.post__imagem'))
                               .map(input => input.value.trim())
                               .filter(url => url);
 
-        if (postText === '') {
-            alert('Por favor, insira o texto do post.');
+        if (postText === '' || postCategory === '') {
+            alert('Por favor, insira o texto e a categoria do post.');
             return;
         }
+
+        // Adiciona a nova categoria ao conjunto de categorias
+        categoriesSet.add(postCategory);
+        updateCategoryOptions();
 
         const postElement = document.createElement('li');
         postElement.classList.add('post-item');
 
         let postContent = `<p class="post-text">${postText}</p>`;
         if (imageUrls.length > 0) {
-            postContent += `<img src="${imageUrls[0]}" alt="Imagem do post" width="70%"`;
+            postContent += `
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        ${imageUrls.map(url => `<img src="${url}" class="carousel-item" alt="Imagem do post">`).join('')}
+                    </div>
+                    <button class="prev" onclick="prevSlide(this)">&#10094;</button>
+                    <button class="next" onclick="nextSlide(this)">&#10095;</button>
+                </div>`;
         }
         postContent += `
             <div class="post-meta">
@@ -37,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         postsList.prepend(postElement);
 
         document.querySelector('#post-texto').value = '';
-        document.querySelector('#post-categorias').value = '';
+        document.querySelector('#post-categorias').value = 'Todos';
         document.querySelectorAll('.post__imagem').forEach(input => input.value = '');
     });
 
@@ -76,38 +88,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Seletor do elemento select que representa as categorias
-        const selectCategoria = document.querySelector('#selecionar-categorias');
-        console.log(`selectCategoria ${selectCategoria}`)
-                selectCategoria.addEventListener('change', function() {
-            
-            const categoriaSelecionada = selectCategoria.value;
-    
-            
-            const postItems = document.querySelectorAll('.post-item');
-    
-            // Quase um "for in range" de python
-            postItems.forEach(function(postagemItem) {
-                
-                const postCategoria = postagemItem.querySelector('.post-category').textContent;
-                console.log (`postCategoria ${postCategoria}`)
-                
-                if (categoriaSelecionada === "Todos" || categoriaSelecionada === postCategoria) {
-                    postagemItem.style.display = 'block';
-                } else {
-                    postagemItem.style.display = 'none';
-                }
-            });
+    selectCategoria.addEventListener('change', function() {
+        const categoriaSelecionada = selectCategoria.value;
+        const postItems = document.querySelectorAll('.post-item');
+
+        postItems.forEach(function(postItem) {
+            const postCategoria = postItem.querySelector('.post-category').textContent;
+
+            if (categoriaSelecionada === "Todos" || categoriaSelecionada === postCategoria) {
+                postItem.style.display = 'block';
+            } else {
+                postItem.style.display = 'none';
+            }
         });
-    
-        
     });
+
+    function updateCategoryOptions() {
+        // Remove todas as opções exceto "Todos"
+        const currentSelection = selectCategoria.value;
+        selectCategoria.innerHTML = '<option value="Todos">Todos</option>';
+        // Adiciona as categorias únicas ao dropdown
+        categoriesSet.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            selectCategoria.appendChild(option);
+        });
+        selectCategoria.value = currentSelection;
+    }
 
     function getCurrentDate() {
         const date = new Date();
         return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     }
+
+    window.prevSlide = function(element) {
+        const carouselInner = element.closest('.carousel').querySelector('.carousel-inner');
+        const items = carouselInner.querySelectorAll('.carousel-item');
+        carouselInner.prepend(items[items.length - 1]);
+    };
+
+    window.nextSlide = function(element) {
+        const carouselInner = element.closest('.carousel').querySelector('.carousel-inner');
+        const items = carouselInner.querySelectorAll('.carousel-item');
+        carouselInner.append(items[0]);
+    };
 });
-
-
