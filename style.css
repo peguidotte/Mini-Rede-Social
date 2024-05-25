@@ -1,5 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 header {
     text-align: center;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
 }
 
 main {
@@ -7,7 +16,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    padding: 2rem;
+    gap: 1.25rem;
 }
 
 .post {
@@ -16,35 +26,152 @@ main {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    background-color: #fff;
+    padding: 2rem 3rem 2rem 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 75%;
+    max-width: 37rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .post__sections {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    text-align: start;
     gap: .5rem;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
 }
 
 .post__campos {
-    width: 30rem;
+    width: 100%;
     height: 8rem;
     padding: .625rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .post__campos2 {
-    width: 30rem;
-    height: 2rem;
+    width: 100%;
+    padding: .625rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 #post-btn {
     margin-top: .625rem;
-    padding: .375rem;
-    background-color: transparent;
+    padding: .75rem 1.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     border-radius: .25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 #post-btn:hover {
-    background-color: lightgray;
-    cursor:pointer;
+    background-color: #0056b3;
+}
+
+.selecionar__categorias {
+    display: flex;
+    flex-direction: column;
+    gap: .3125rem;
+}
+
+/* Estilo geral da lista de posts */
+.post-list {
+    list-style-type: none; /* Remove os marcadores padrão da lista */
+    padding: 0; /* Remove o padding padrão */
+}
+
+/* Estilo dos itens de post */
+.post-item {
+    border: 1px solid #ccc; /* Borda ao redor do post */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 16px; /* Espaçamento interno */
+    margin-bottom: 16px; /* Espaçamento entre posts */
+    background-color: #f9f9f9; /* Cor de fundo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25rem; 
+    max-width: 100%; 
+    box-sizing: border-box; 
+    overflow-wrap: break-word;
+}
+
+/* Estilo do texto do post */
+.post-item p {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    width: 100%;
+    font-size: 1rem; /* Tamanho da fonte */
+    margin-bottom: 8px; /* Espaçamento abaixo do texto */
+    text-align: start;
+}
+
+/* Estilo das imagens do post */
+.post-item img {
+    display: flex; /* Faz com que a imagem seja exibida como bloco */
+    margin-bottom: 8px; /* Espaçamento abaixo da imagem */
+    text-align: center;
+}
+
+/* Estilo dos metadados do post */
+.post-meta {
+    display: flex; /* Faz com que os itens sejam exibidos em linha */
+    flex-direction: column;
+    gap: .625rem;
+    justify-content: space-between; /* Distribui espaço igualmente entre os itens */
+    align-items: center; /* Alinha os itens ao centro verticalmente */
+    margin-top: 8px; /* Espaçamento acima dos metadados */
+}
+
+/* Estilo das categorias do post */
+.post-category {
+    font-size: .875rem; /* Tamanho da fonte */
+    color: #555; /* Cor da fonte */
+}
+
+/* Estilo das datas do post */
+.post-date {
+    font-size: .75rem; /* Tamanho da fonte */
+    color: #888; /* Cor da fonte */
+}
+
+/* Estilo dos botões de editar e excluir */
+.edit-btn, .delete-btn {
+    padding: 4px 8px; /* Espaçamento interno dos botões */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+}
+
+.edit-btn {
+    background-color: #4caf50; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+}
+
+.delete-btn {
+    background-color: #f44336; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto */
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8; /* Transparência ao passar o mouse */
+}
+
+@media screen and (max-width: 480px) {
+    .post-item {
+        width: 10rem; /* Ajusta a largura para caber na tela menor */
+        padding: 8px; /* Ajusta o padding */
+    }
 }
