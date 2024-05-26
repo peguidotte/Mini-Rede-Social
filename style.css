@@ -5,7 +5,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #6a0dad, #4f2e8e); 
+    background: linear-gradient(to bottom, #6a0dad, #2a1e3f); 
 }
 
 header {
@@ -90,6 +90,13 @@ label {
 #post-btn:hover {
     background-color: #9d12c7;
 }
+
+
+.text_categoria{
+    color: white;
+}
+
+
 
 .selecionar__categorias {
     display: flex;
@@ -196,13 +203,13 @@ label {
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
+    padding: 8px;
     margin-top: -22px;
-    color: black;
+    color: #000;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
     transition: 0.6s ease;
-    border-radius: 50%;
+    border-radius: 8px;
     user-select: none;
 }
 
@@ -215,7 +222,7 @@ label {
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+    background-color: gray;
 }
 
 @media screen and (max-width: 480px) {

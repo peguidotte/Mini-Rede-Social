@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btn_criar_post = document.querySelector('#post-btn');
     const postsList = document.querySelector('#posts');
     const selectCategoria = document.querySelector('#selecionar-categorias');
-    const categoriesSet = new Set(); // Para armazenar as categorias únicas
+    const categoriesSet = new Set(); 
 
     btn_criar_post.addEventListener('click', function(event) {
         event.preventDefault();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Adiciona a nova categoria ao conjunto de categorias
+        
         categoriesSet.add(postCategory);
         updateCategoryOptions();
 
@@ -104,10 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateCategoryOptions() {
-        // Remove todas as opções exceto "Todos"
         const currentSelection = selectCategoria.value;
         selectCategoria.innerHTML = '<option value="Todos">Todos</option>';
-        // Adiciona as categorias únicas ao dropdown
         categoriesSet.forEach(category => {
             const option = document.createElement('option');
             option.value = category;
