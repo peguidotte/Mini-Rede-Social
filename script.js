@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const btn_criar_post = document.querySelector('#post-btn');
+    const btnPost = document.querySelector('#post-btn');
     const postsList = document.querySelector('#posts');
     const selectCategoria = document.querySelector('#selecionar-categorias');
     const categoriesSet = new Set(); 
 
-    btn_criar_post.addEventListener('click', function(event) {
+    btnPost.addEventListener('click', function(event) {
         event.preventDefault();
 
         const postText = document.querySelector('#post-texto').value.trim();
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let postContent = `<p class="post-text">${postText}</p>`;
         if (imageUrls.length > 0) {
             postContent += `
-                <div class="carousel">
-                    <div class="carousel-inner">
-                        ${imageUrls.map(url => `<img src="${url}" class="carousel-item" alt="Imagem do post">`).join('')}
+                <div class="carrossel">
+                    <div class="carrossel-inner">
+                        ${imageUrls.map(url => `<img src="${url}" class="carrossel-item" alt="Imagem do post">`).join('')}
                     </div>
                     <button class="prev" onclick="prevSlide(this)">&#10094;</button>
                     <button class="next" onclick="nextSlide(this)">&#10095;</button>
@@ -121,14 +121,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.prevSlide = function(element) {
-        const carouselInner = element.closest('.carousel').querySelector('.carousel-inner');
-        const items = carouselInner.querySelectorAll('.carousel-item');
-        carouselInner.prepend(items[items.length - 1]);
+        const carrosselInner = element.closest('.carrossel').querySelector('.carrossel-inner');
+        const items = carrosselInner.querySelectorAll('.carrossel-item');
+        carrosselInner.prepend(items[items.length - 1]);
     };
 
     window.nextSlide = function(element) {
-        const carouselInner = element.closest('.carousel').querySelector('.carousel-inner');
-        const items = carouselInner.querySelectorAll('.carousel-item');
-        carouselInner.append(items[0]);
+        const carrosselInner = element.closest('.carrossel').querySelector('.carrossel-inner');
+        const items = carrosselInner.querySelectorAll('.carrossel-item');
+        carrosselInner.append(items[0]);
     };
 });
