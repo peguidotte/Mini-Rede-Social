@@ -5,10 +5,12 @@
 ### Felipe Xavier RM556931 [Github](https://github.com/felipexaviersz) / [Linkedin](https://www.linkedin.com/in/felipe-xavier-08237325b/)
 ### Pedro Guidotte RM556630 [Github](https://github.com/peguidotte) / [Linkedin](https://www.linkedin.com/in/pedro-guidotte/)
 
+## [Link GitHub Pages](https://peguidotte.github.io/Mini-Rede-Social/) 
+
 ### Nesse projeto:
-#### Manipulação de DOM
-#### Manipulação de Arrays
-#### HTML semântico e accessível
-#### Responsividade
+#### - Manipulação de DOM
+#### - Manipulação de Arrays
+#### - HTML semântico e accessível
+#### - Responsividade
 
 
